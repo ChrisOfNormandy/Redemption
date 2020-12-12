@@ -17,4 +17,18 @@ public class Main {
 
         return block;
     }
+
+    public static Block create_ore_gem(String name, int minXp, int maxXp, ItemGroup group, Properties properties) {
+        Block block = ModRegister.registerOre(name, minXp, maxXp, properties, "gem", group);
+
+        return block;
+    }
+
+    // public static Block create_ore_resource() {
+
+    // }
+
+    // public static Block create_ore_fuel() {
+
+    // }
 }

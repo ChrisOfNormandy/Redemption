@@ -1,23 +1,22 @@
 package com.conlib.block;
 
-// import net.minecraft.block.OreBlock;
-// import net.minecraft.block.Block;
-// import net.minecraft.util.math.MathHelper;
+import net.minecraft.block.OreBlock;
+import net.minecraft.util.math.MathHelper;
 
-// import java.util.Random;
+import java.util.Random;
 
-public class OreBase {
-    // private final int minXP;
-//   private final int maxXP;
+public class OreBase extends OreBlock {
+    private final int minXP;
+  private final int maxXP;
 
-  public OreBase(int minXP, int maxXP) {
-    super();
-    // this.minXP = minXP;
-    // this.maxXP = maxXP;
+  public OreBase(Properties properties, int minXP, int maxXP) {
+    super(properties);
+    this.minXP = minXP;
+    this.maxXP = maxXP;
   }
 
-//   @Override
-//   protected int getExpDrop(Random rand) {
-//     return MathHelper.nextInt(rand, minXP, maxXP);
-//   }
+  @Override
+  protected int getExperience(Random rand) {
+    return MathHelper.nextInt(rand, minXP, maxXP);
+  }
 }

@@ -2,6 +2,7 @@ package com.conlib.registry;
 
 import java.util.HashMap;
 
+import com.conlib.block.OreBase;
 import com.conlib.itemgroup.Groups;
 // import com.conlib.block.PlantBase;
 import com.conlib.tool.CraftingTool;
@@ -63,6 +64,21 @@ public class ModRegister {
 
     public static Block registerCrop(CropsBlock crop, String name) {
         return registerBlock(crop, name);
+    }
+
+    public static Block registerOre(String name, int minXp, int maxXp, Block.Properties properties, String type, ItemGroup group) {
+        Block block = registerBlock(new OreBase(properties, minXp, maxXp), name, group);
+
+        switch(type) {
+            case "gem": {
+                
+            }
+            default: {
+                
+            }
+        }
+
+        return block;
     }
 
     // public static Block registerPlant(String name, PlantType plantType, ItemGroup group) {
