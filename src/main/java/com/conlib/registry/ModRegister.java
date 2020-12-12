@@ -2,6 +2,7 @@ package com.conlib.registry;
 
 import java.util.HashMap;
 
+import com.conlib.itemgroup.Groups;
 // import com.conlib.block.PlantBase;
 import com.conlib.tool.CraftingTool;
 import com.conmod.redemption.Main;
@@ -24,9 +25,23 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 // import net.minecraftforge.common.PlantType;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ModRegister {
     public ModRegister() {
 
+    }
+
+    public static final Logger LOG = LogManager.getLogger();
+
+    // ITEM GROUPS
+    public static HashMap<String, ItemGroup> groups = new HashMap<String, ItemGroup>();
+
+    public static Groups itemGroup(String name, String icon_itemName) {
+        Groups group = Groups.createGroup(name, icon_itemName);
+        groups.put(name, group);
+        return group;
     }
 
     // BLOCK TYPES
@@ -59,6 +74,13 @@ public class ModRegister {
     // BLOCKS
     public static HashMap<String, Block> blocks = new HashMap<String, Block>();
 
+    /**
+     * Registers new Block and new ItemBlock.
+     * @param block
+     * @param name
+     * @param group
+     * @return
+     */
     public static Block registerBlock(Block block, String name, ItemGroup group)
     {
         BlockItem itemBlock = new BlockItem(block, new Item.Properties().group(group));
@@ -67,9 +89,16 @@ public class ModRegister {
         ForgeRegistries.BLOCKS.register(block);
         ForgeRegistries.ITEMS.register(itemBlock);
         blocks.put(name, block);
+        LOG.info("Registered new block: " + block.getRegistryName());
         return block;
     }
 
+    /**
+     * Registers new Block without an ItemBlock.
+     * @param block
+     * @param name
+     * @return
+     */
     public static Block registerBlock(Block block, String name)
     {
         block.setRegistryName(name);
@@ -135,4 +164,7 @@ public class ModRegister {
         generators.put(name, entry);
         return entry;
     }
+
+
+
 }

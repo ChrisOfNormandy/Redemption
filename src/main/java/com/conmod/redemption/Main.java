@@ -89,6 +89,8 @@ public class Main
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
             LOG.info("HELLO from Register Block");
+
+            ModBlocks.Init();
         }
     }
 }
