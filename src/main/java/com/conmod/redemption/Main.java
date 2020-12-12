@@ -91,6 +91,7 @@ public class Main
             LOG.info("HELLO from Register Block");
 
             ModBlocks.Init();
+            ModItems.Init();
         }
     }
 }

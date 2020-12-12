@@ -16,7 +16,7 @@ public class Groups extends ItemGroup {
     }
 
     public static final Groups createGroup(String name, String icon_itemName) {
-        return new Groups("blocks", () -> new ItemStack(ModRegister.items.get(icon_itemName)));
+        return new Groups(name, () -> new ItemStack(ModRegister.items.get(icon_itemName)));
     }
 
     @Override
