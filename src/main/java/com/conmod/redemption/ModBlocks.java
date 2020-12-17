@@ -12,6 +12,6 @@ public class ModBlocks {
         Groups itemGroup = ModRegister.itemGroup("redemption_blocks", "testblock");
 
         Main.create_collectable("testblock", itemGroup, Properties.create(Material.ROCK));
-        Main.create_ore_gem("testore", 1, 4, itemGroup, Properties.create(Material.ROCK));
+        // Main.create_ore_gem("testore", 1, 4, itemGroup, Properties.create(Material.ROCK));
     }
 }

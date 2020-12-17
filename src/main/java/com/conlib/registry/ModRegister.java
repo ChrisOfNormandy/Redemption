@@ -2,10 +2,14 @@ package com.conlib.registry;
 
 import java.util.HashMap;
 
+import javax.annotation.Nullable;
+
 import com.conlib.block.OreBase;
 import com.conlib.itemgroup.Groups;
 // import com.conlib.block.PlantBase;
 import com.conlib.tool.CraftingTool;
+import com.conlib.tool.Tool;
+import com.conlib.tool.ToolMaterial;
 import com.conmod.redemption.Main;
 
 import net.minecraft.block.Block;
@@ -15,14 +19,19 @@ import net.minecraft.block.StairsBlock;
 import net.minecraft.block.WallBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
+import net.minecraft.block.material.PushReaction;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.Item.Properties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraftforge.common.ToolType;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 // import net.minecraftforge.common.PlantType;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -66,19 +75,50 @@ public class ModRegister {
         return registerBlock(crop, name);
     }
 
-    public static Block registerOre(String name, int minXp, int maxXp, Block.Properties properties, String type, ItemGroup group) {
-        Block block = registerBlock(new OreBase(properties, minXp, maxXp), name, group);
 
-        switch(type) {
-            case "gem": {
-                
-            }
-            default: {
-                
-            }
-        }
+    // RESOURCES
+    public static HashMap<String, Material> materials = new HashMap<String, Material>();
+    public static HashMap<String, ToolMaterial> toolMaterials = new HashMap<String, ToolMaterial>();
 
+    public static Material registerMaterial(String name, MaterialColor color, boolean isLiquid, boolean isSolid, boolean blocksMovement, boolean isOpaque, boolean flammable, boolean replaceable, PushReaction pushReaction) {
+        Material material = new Material(color, isLiquid, isSolid, blocksMovement, isOpaque, flammable, replaceable, pushReaction);
+        materials.put(name, material);
+        return material;
+    }
+
+    public static ToolMaterial registerToolMaterial(String name, int level, int maxDamage, boolean immuneToFire, Rarity rarity, boolean noRepair, ToolMaterial.type resource_type) {
+        ToolMaterial material = new ToolMaterial(level, maxDamage, immuneToFire, rarity, noRepair, resource_type);
+        toolMaterials.put(name, material);
+        return material;
+    }
+
+    /**
+     * 
+     * @param name
+     * @param oreBase
+     * @param group
+     * @return
+     */
+    public static Block registerOre(String name, OreBase oreBase, ItemGroup group) {
+        Block block = registerBlock(oreBase, name, group);
         return block;
+    }
+
+    /**
+     * 
+     * @param name Only supply the pure resource name
+     * @param toolMaterial Use registerToolMaterial
+     * @param oreBase Use registerOre
+     * @param isFuel
+     * @param generateTools
+     */
+    public static void registerResource(String name, ToolMaterial toolMaterial, @Nullable OreBase oreBase, ItemGroup group, boolean generateTools) {
+        if (generateTools) {
+            registerTool(name + "_shovel", toolMaterial, ToolType.SHOVEL, toolMaterial.level(), group);
+            registerTool(name + "_pickaxe", toolMaterial, ToolType.PICKAXE, toolMaterial.level(), group);
+            registerTool(name + "_axe", toolMaterial, ToolType.AXE, toolMaterial.level(), group);
+            registerTool(name + "_hoe", toolMaterial, ToolType.HOE, toolMaterial.level(), group);
+        }
     }
 
     // public static Block registerPlant(String name, PlantType plantType, ItemGroup group) {
@@ -141,7 +181,6 @@ public class ModRegister {
         return item;
     }
 
-
     // TOOLS
     public static HashMap<String, Item> tools = new HashMap<String, Item>();
 
@@ -151,6 +190,11 @@ public class ModRegister {
         return registerItem(name, item);
     }
 
+    public static Item registerTool(String name, ToolMaterial toolMaterial, ToolType toolType, int level, ItemGroup group) {
+        Tool item = new Tool(toolMaterial.getProperties().group(group), toolType, level);
+        tools.put(name, item);
+        return registerItem(name, item);
+    }
 
     // FOODS
     public static Food registerFoodNoItem(int hunger, float saturation) {
@@ -180,7 +224,4 @@ public class ModRegister {
         generators.put(name, entry);
         return entry;
     }
-
-
-
 }
