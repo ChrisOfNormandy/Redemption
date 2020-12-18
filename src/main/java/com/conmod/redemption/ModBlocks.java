@@ -1,6 +1,7 @@
 package com.conmod.redemption;
 
 import com.conlib.block.Main;
+import com.conlib.block.OreBase;
 import com.conlib.itemgroup.Groups;
 import com.conlib.registry.ModRegister;
 
@@ -11,7 +12,7 @@ public class ModBlocks {
     public static void Init() {
         Groups itemGroup = ModRegister.itemGroup("redemption_blocks", "testblock");
 
-        Main.create_collectable("testblock", itemGroup, Properties.create(Material.ROCK));
-        // Main.create_ore_gem("testore", 1, 4, itemGroup, Properties.create(Material.ROCK));
+        ModRegister.registerBlock("testblock", Main.create_rock(1), itemGroup);
+        ModRegister.registerOre("testore", new OreBase(Properties.create(Material.ROCK), 1, 4), itemGroup);
     }
 }

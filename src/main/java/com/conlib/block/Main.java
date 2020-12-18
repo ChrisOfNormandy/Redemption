@@ -1,21 +1,28 @@
 package com.conlib.block;
-import com.conlib.registry.ModRegister;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WallBlock;
 import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.block.material.Material;
 
 public class Main {
-    public static Block create_collectable(String name, ItemGroup group, Properties properties) {
-        Block block = ModRegister.registerBlock(new Block(properties), name, group);
-
-        return block;
+    public static Block create_rock(int harvestLevel) {
+        return new Block(Properties.create(Material.ROCK).hardnessAndResistance(3.0f).sound(SoundType.STONE).harvestLevel(harvestLevel));
     }
 
-    public static Block create_uncollectable(String name, ItemGroup group, Properties properties) {
-        Block block = ModRegister.registerBlock(new Block(properties), name);
+    public static Block create_slab(Block parent) {
+        return new SlabBlock(Properties.from(parent));
+    }
 
-        return block;
+    public static Block create_stairs(Block parent) {
+        return new StairsBlock(() -> parent.getDefaultState(), Properties.from(parent));
+    }
+
+    public static Block create_wall(Block parent) {
+        return new WallBlock(Properties.from(parent));
     }
 
     // public static Block create_ore_gem(String name, int minXp, int maxXp, ItemGroup group, Properties properties) {

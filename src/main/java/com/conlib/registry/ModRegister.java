@@ -1,40 +1,29 @@
 package com.conlib.registry;
 
 import java.util.HashMap;
-
 import javax.annotation.Nullable;
-
 import com.conlib.block.OreBase;
 import com.conlib.itemgroup.Groups;
-// import com.conlib.block.PlantBase;
 import com.conlib.tool.CraftingTool;
 import com.conlib.tool.Tool;
 import com.conlib.tool.ToolMaterial;
 import com.conmod.redemption.Main;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.WallBlock;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.Properties;
+import net.minecraft.item.Food;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Rarity;
-import net.minecraft.item.Item.Properties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-// import net.minecraftforge.common.PlantType;
 import net.minecraftforge.registries.ForgeRegistries;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -55,24 +44,8 @@ public class ModRegister {
     }
 
     // BLOCK TYPES
-    public static Block rock(int harvestLevel) {
-        return new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f).sound(SoundType.STONE).harvestLevel(harvestLevel));
-    }
-
-    public static Block slab(Block parent) {
-        return new SlabBlock(Block.Properties.from(parent));
-    }
-
-    public static Block stairs(Block parent) {
-        return new StairsBlock(() -> parent.getDefaultState(), Block.Properties.from(parent));
-    }
-
-    public static Block wall(Block parent) {
-        return new WallBlock(Block.Properties.from(parent));
-    }    
-
     public static Block registerCrop(CropsBlock crop, String name) {
-        return registerBlock(crop, name);
+        return registerBlock(name, crop);
     }
 
 
@@ -100,7 +73,7 @@ public class ModRegister {
      * @return
      */
     public static Block registerOre(String name, OreBase oreBase, ItemGroup group) {
-        Block block = registerBlock(oreBase, name, group);
+        Block block = registerBlock(name, oreBase, group);
         return block;
     }
 
@@ -137,7 +110,7 @@ public class ModRegister {
      * @param group
      * @return
      */
-    public static Block registerBlock(Block block, String name, ItemGroup group)
+    public static Block registerBlock(String name, Block block, ItemGroup group)
     {
         BlockItem itemBlock = new BlockItem(block, new Item.Properties().group(group));
         block.setRegistryName(name);
@@ -155,7 +128,7 @@ public class ModRegister {
      * @param name
      * @return
      */
-    public static Block registerBlock(Block block, String name)
+    public static Block registerBlock(String name, Block block)
     {
         block.setRegistryName(name);
         ForgeRegistries.BLOCKS.register(block);
