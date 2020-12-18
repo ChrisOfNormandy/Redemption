@@ -1,5 +1,7 @@
 package com.conlib.block;
 
+import com.conlib.registry.ModRegister;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
@@ -7,6 +9,7 @@ import net.minecraft.block.StairsBlock;
 import net.minecraft.block.WallBlock;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemGroup;
 
 public class Main {
     public static Block create_rock(int harvestLevel) {
@@ -25,6 +28,14 @@ public class Main {
         return new WallBlock(Properties.from(parent));
     }
 
+    public static void registerRockSuite(String name, int harvestLevel, ItemGroup group) {
+        Block block = create_rock(harvestLevel);
+
+        ModRegister.registerBlock(name, block, group);
+        ModRegister.registerBlock(name + "_slab", create_slab(block), group);
+        ModRegister.registerBlock(name + "_stairs", create_stairs(block), group);
+        ModRegister.registerBlock(name + "_wall", create_wall(block), group);
+    }
     // public static Block create_ore_gem(String name, int minXp, int maxXp, ItemGroup group, Properties properties) {
     //     Block block = ModRegister.registerOre(name, minXp, maxXp, properties, "gem", group);
 

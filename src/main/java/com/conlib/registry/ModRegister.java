@@ -135,7 +135,6 @@ public class ModRegister {
         blocks.put(name, block);
         return block;
     }
-    
 
     // ITEMS
     public static HashMap<String, Item> items = new HashMap<String, Item>();

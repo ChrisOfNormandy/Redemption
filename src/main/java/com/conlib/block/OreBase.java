@@ -1,16 +1,18 @@
 package com.conlib.block;
 
 import net.minecraft.block.OreBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.Random;
 
 public class OreBase extends OreBlock {
-    private final int minXP;
-  private final int maxXP;
+  private int minXP;
+  private int maxXP;
 
-  public OreBase(Properties properties, int minXP, int maxXP) {
-    super(properties);
+  public OreBase(int minXP, int maxXP, int harvestLevel) {
+    super(Properties.create(Material.ROCK).hardnessAndResistance(3.0f).sound(SoundType.STONE).harvestLevel(harvestLevel));
     this.minXP = minXP;
     this.maxXP = maxXP;
   }
