@@ -10,6 +10,8 @@ public class ModBlocks {
         Groups itemGroup = ModRegister.itemGroup("redemption_blocks", "testblock");
 
         Main.registerRockSuite("testblock", 1, itemGroup);
+        Main.registerWoodSuite("testwood", itemGroup);
+
         ModRegister.registerOre("testore", new OreBase(1, 4, 2), itemGroup);
     }
 }

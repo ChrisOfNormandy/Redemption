@@ -43,42 +43,42 @@ public class Main
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOG.info("HELLO FROM PREINIT");
-        LOG.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        // LOG.info("HELLO FROM PREINIT");
+        // LOG.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
-        try {
-            LOG.info("SENDING INFO.");
-            Client.Send("TEST STRING.");
-        }
-        catch (Exception e) {
-            LOG.warn("################");
-            LOG.warn(e);
-        }
+        // try {
+        //     LOG.info("SENDING INFO.");
+        //     Client.Send("TEST STRING.");
+        // }
+        // catch (Exception e) {
+        //     LOG.warn("################");
+        //     LOG.warn(e);
+        // }
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-        LOG.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        // LOG.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOG.info("Hello world from the MDK"); return "Hello world";});
+        // InterModComms.sendTo("redemption", "helloworld", () -> { LOG.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
     {
         // some example code to receive and process InterModComms from other mods
-        LOG.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
+        // LOG.info("Got IMC {}", event.getIMCStream().
+        //         map(m->m.getMessageSupplier().get()).
+        //         collect(Collectors.toList()));
     }
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
-        LOG.info("HELLO from server starting");
+        // LOG.info("HELLO from server starting");
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -88,7 +88,7 @@ public class Main
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
-            LOG.info("HELLO from Register Block");
+            LOG.info("####################################");
 
             ModBlocks.Init();
             ModItems.Init();
