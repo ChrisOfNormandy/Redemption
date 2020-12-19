@@ -11,6 +11,8 @@ import net.minecraft.block.WallBlock;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.LootTableManager;
 
 public class Main {
     public static Block create_rock(int harvestLevel) {
@@ -57,6 +59,51 @@ public class Main {
         ModRegister.registerBlock(name + "_stairs", create_stairs(planks), group);
         ModRegister.registerBlock(name + "_fence", create_fence(planks), group);
     }
+
+
+
+    public static Node create_node(Block parent, Node.Tier tier, int damage) {
+        return new Node(Properties.from(parent), tier, damage, parent.asItem());
+    }
+
+    public static void registerNode(String name, Block parent, Node.Tier tier, ItemGroup group) {
+        int crude = 3;
+        int normal = 4;
+        int rich = 5;
+
+        int count = 0;
+
+        switch (tier) {
+            case CRUDE: {
+                count = crude;
+                break;
+            }
+            case NORMAL: {
+                count = normal;
+                break;
+            }
+            case RICH: {
+                count = rich;
+                break;
+            }
+        }
+
+        Node n = create_node(parent, tier, count);
+
+        Block node = ModRegister.registerBlock(name, n, group);
+        ModRegister.nodes.put(node.getRegistryName().toString(), n);
+
+        Block old_ = node;
+        Block new_ = null;
+
+        for (int i = count - 1; i > 0; i--) {
+            new_ = ModRegister.registerBlock(name + "_" + i, create_node(parent, tier, i));
+            old_ = ModRegister.setBlock_replaceable(old_, new_);
+
+            ModRegister.registerNode(new_.getRegistryName().toString(), n);
+        }
+    }
+
     // public static Block create_ore_gem(String name, int minXp, int maxXp, ItemGroup group, Properties properties) {
     //     Block block = ModRegister.registerOre(name, minXp, maxXp, properties, "gem", group);
 

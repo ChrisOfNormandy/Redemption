@@ -2,7 +2,10 @@ package com.conlib.registry;
 
 import java.util.HashMap;
 import javax.annotation.Nullable;
+
+import com.conlib.block.Node;
 import com.conlib.block.OreBase;
+import com.conlib.event.BlockBreak;
 import com.conlib.itemgroup.Groups;
 import com.conlib.tool.CraftingTool;
 import com.conlib.tool.Tool;
@@ -22,6 +25,7 @@ import net.minecraft.item.Rarity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +33,11 @@ import org.apache.logging.log4j.Logger;
 
 public class ModRegister {
     public ModRegister() {
+        
+    }
 
+    public static void Init() {
+        MinecraftForge.EVENT_BUS.register(BlockBreak.class);
     }
 
     public static final Logger LOG = LogManager.getLogger();
@@ -195,5 +203,30 @@ public class ModRegister {
         ForgeRegistries.FEATURES.register(entry);
         generators.put(name, entry);
         return entry;
+    }
+
+    // EVENTS
+
+    
+
+    // SPECIAL
+    public static HashMap<String, Block> blocks_unbreakable = new HashMap<String, Block>();
+    public static HashMap<String, Block> blocks_replaceable = new HashMap<String, Block>();
+    public static HashMap<String, Node> nodes = new HashMap<String, Node>();
+
+    public static <T extends Block> T setBlock_unbreakable(T block) {
+        blocks_unbreakable.put(block.getRegistryName().toString(), block);
+        return block;
+    }
+
+    public static <T extends Block> T setBlock_replaceable(T blockIn, T blockOut) {
+        blocks_replaceable.put(blockIn.getRegistryName().toString(), blockOut);
+        return blockOut;
+    }
+
+    public static Node registerNode(String name, Node node) {
+        LOG.info("Registered node: " + name + " -> " + node.getRegistryName().toString());
+        nodes.put(name, node);
+        return node;
     }
 }

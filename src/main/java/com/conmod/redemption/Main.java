@@ -18,6 +18,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
+import com.conlib.registry.ModRegister;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("redemption")
 public class Main
@@ -89,7 +91,8 @@ public class Main
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
             LOG.info("####################################");
-
+            ModRegister.Init();
+            
             ModBlocks.Init();
             ModItems.Init();
         }

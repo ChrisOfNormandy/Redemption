@@ -1,1 +1,1 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"redemption:testore"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"redemption:testitem"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
