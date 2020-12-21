@@ -96,8 +96,11 @@ public class Main {
         Block old_ = node;
         Block new_ = null;
 
-        for (int i = count - 1; i > 0; i--) {
-            new_ = ModRegister.registerBlock(name + "_" + i, create_node(parent, tier, i));
+        for (int i = count - 1; i >= 0; i--) {
+            new_ = (i > 0)
+                ? ModRegister.registerBlock(name + "_" + i, create_node(parent, tier, i))
+                : parent;
+
             old_ = ModRegister.setBlock_replaceable(old_, new_);
 
             ModRegister.registerNode(new_.getRegistryName().toString(), n);

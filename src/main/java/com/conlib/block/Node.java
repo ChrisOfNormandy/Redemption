@@ -1,5 +1,9 @@
 package com.conlib.block;
 
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,8 +36,13 @@ public class Node extends Block {
         return this.item;
     }
 
-    public ItemStack getDrop() {
-        int count = this.tier == Tier.CRUDE ? 1 : tier == Tier.NORMAL ? 2 : 3;
+    public ItemStack getDrop(@Nullable Random rand) {
+        int max = this.tier == Tier.CRUDE ? 1 : tier == Tier.NORMAL ? 2 : 3;
+        
+        int count = (rand != null)
+            ? rand.nextInt(max + 1) + 1
+            : max;
+
         return new ItemStack(this.item, count);
     }
 }

@@ -1,11 +1,20 @@
 package com.conlib.event;
 
+import java.util.Random;
+
 import com.conlib.registry.ModRegister;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -24,16 +33,23 @@ public class BlockBreak {
     @SubscribeEvent
     public static void replaceBlock(final BlockEvent.BreakEvent event) {
         Block blockIn = event.getState().getBlock();
+        PlayerEntity player = event.getPlayer();
 
         if (ModRegister.blocks_replaceable.containsKey(blockIn.getRegistryName().toString())) {
-            event.setCanceled(true);
 
-            event.getWorld().setBlockState(event.getPos(), ModRegister.blocks_replaceable.get(blockIn.getRegistryName().toString()).getDefaultState(), 1);
+            if (player.getHeldItemMainhand() != null) {
+                Item heldItem = player.getHeldItemMainhand().getItem();
+    
+                if (heldItem.getHarvestLevel(player.getHeldItemMainhand(), ToolType.PICKAXE, player, blockIn.getDefaultState()) != -1) {
+                    Random rand = new Random();
+                    event.setCanceled(true);
 
-            LOG.info("Replacing block with: " + ModRegister.blocks_replaceable.get(blockIn.getRegistryName().toString()).getRegistryName().toString());
-            LOG.info("Giving: " + ModRegister.nodes.get(blockIn.getRegistryName().toString()).getDrop().getDisplayName().getString());
+                    event.getWorld().setBlockState(event.getPos(), ModRegister.blocks_replaceable.get(blockIn.getRegistryName().toString()).getDefaultState(), 1);
 
-            event.getPlayer().addItemStackToInventory(ModRegister.nodes.get(blockIn.getRegistryName().toString()).getDrop());
+                    event.getPlayer().addItemStackToInventory(ModRegister.nodes.get(blockIn.getRegistryName().toString()).getDrop(rand));
+                    // event.getWorld().playSound(player, event.getPos(), new SoundEvent(new ResourceLocation("minecraft", "entity.item.pickup")), SoundCategory.NEUTRAL, 1.0f, 1.0f);
+                }
+            }
         }
     }
 }
