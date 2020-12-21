@@ -1,13 +1,19 @@
 package com.conlib.config;
 
+import java.util.HashMap;
+
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class Enable {
-    public static ForgeConfigSpec.BooleanValue enable_wild_mustard;
+    public static HashMap<String, ForgeConfigSpec.ConfigValue<Boolean>> values = new HashMap<String, ForgeConfigSpec.ConfigValue<Boolean>>();
 
-    public static void init(ForgeConfigSpec.Builder config) {
-        enable_wild_mustard = config
-            .comment("Should wild mustard generate?")
-            .define("doWildMustard", true);
+    static ForgeConfigSpec.Builder config;
+
+    public static void addValue(String key, Boolean defaultValue, String comment) {
+        values.put(key, config.comment(comment).define(key, defaultValue));
     }
+
+	public static void Init(ForgeConfigSpec.Builder configIn) {
+		config = configIn;
+	}
 }

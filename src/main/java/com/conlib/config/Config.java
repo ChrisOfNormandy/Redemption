@@ -11,22 +11,21 @@ public class Config {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	public static final ForgeConfigSpec CONFIG;
 
-	static {
-		
+	static {		
 		BUILDER.push("Chance Rates");
-		Chance.init(BUILDER);
+		Chance.Init(BUILDER);
 		BUILDER.pop();
 
 		BUILDER.push("Elements");
-		Element.init(BUILDER);
+		Element.Init(BUILDER);
 		BUILDER.pop();
 		
 		BUILDER.push("Enable/Disable Options");
-		Enable.init(BUILDER);
+		Enable.Init(BUILDER);
 		BUILDER.pop();	
 		
 		BUILDER.push("Dimensions");
-		Dimension.init(BUILDER);
+		Dimension.Init(BUILDER);
 		BUILDER.pop();
 
 		CONFIG = BUILDER.build();
@@ -35,7 +34,9 @@ public class Config {
 	public static void loadConfig(ForgeConfigSpec config, String path) {
 		CommentedFileConfig file = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE)
 				.build();
+
 		file.load();
+		
 		config.setConfig(file);
 	}
 }
