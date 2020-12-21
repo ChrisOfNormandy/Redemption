@@ -11,8 +11,6 @@ import net.minecraft.block.WallBlock;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.LootTableManager;
 
 public class Main {
     public static Block create_rock(int harvestLevel) {

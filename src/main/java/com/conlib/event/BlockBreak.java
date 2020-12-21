@@ -4,23 +4,19 @@ import java.util.Random;
 
 import com.conlib.registry.ModRegister;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+// import org.apache.logging.log4j.LogManager;
+// import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 
 public class BlockBreak {
-    private static Logger LOG = LogManager.getLogger();
+    // private static Logger LOG = LogManager.getLogger();
 
     @SubscribeEvent
     public static void cancelBlockBreak(final BlockEvent.BreakEvent event) {
