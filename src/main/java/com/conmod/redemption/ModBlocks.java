@@ -17,7 +17,9 @@ public class ModBlocks {
 
         Block nodedrop = ModRegister.registerBlock("nodedrop", Main.create_rock(2), itemGroup);
 
-        Main.registerNode("testnode", nodedrop, Tier.NORMAL, itemGroup);
+        Main.registerNode("crudetestnode", nodedrop, Tier.CRUDE, itemGroup);
+        Main.registerNode("normaltestnode", nodedrop, Tier.NORMAL, itemGroup);
+        Main.registerNode("richtestnode", nodedrop, Tier.RICH, itemGroup);
 
         ModRegister.registerOre("testore", new OreBase(1, 4, 2), itemGroup);
     }

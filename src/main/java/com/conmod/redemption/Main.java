@@ -34,7 +34,12 @@ public class Main
     public static String MOD_ID = "redemption";
 
     public Main() {
+        Mod_Config.Init();
+        Config.Init();
+
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, MOD_ID + ".toml");
+        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve(MOD_ID + ".toml").toString());
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -43,9 +48,6 @@ public class Main
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-        Mod_Config.Init();
-        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve(MOD_ID + ".toml").toString());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -100,6 +102,8 @@ public class Main
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
             LOG.info("####################################");
+
+            LOG.info("CONFIG VALUE: " + Config.getRangeValue("test_value"));
 
             ModRegister.Init();
             

@@ -1,9 +1,11 @@
 package com.conlib.block;
 
+import com.conlib.config.Config;
 import com.conlib.registry.ModRegister;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.FenceBlock;
+import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
@@ -37,6 +39,10 @@ public class Main {
         return new FenceBlock(Properties.from(parent));
     }
 
+    public static Block create_fenceGate(Block parent) {
+        return new FenceGateBlock(Properties.from(parent));
+    }
+
     public static void registerRockSuite(String name, int harvestLevel, ItemGroup group) {
         Block block = create_rock(harvestLevel);
 
@@ -50,24 +56,23 @@ public class Main {
         Block log = create_wood();
         Block planks = create_wood();
 
-        ModRegister.registerBlock(name + "_wood", log, group);
+        ModRegister.registerBlock(name + "_log", log, group);
 
         ModRegister.registerBlock(name + "_planks", planks);
         ModRegister.registerBlock(name + "_slab", create_slab(planks), group);
         ModRegister.registerBlock(name + "_stairs", create_stairs(planks), group);
         ModRegister.registerBlock(name + "_fence", create_fence(planks), group);
+        ModRegister.registerBlock(name + "_fence_gate", create_fenceGate(planks), group);
     }
-
-
 
     public static Node create_node(Block parent, Node.Tier tier, int damage) {
         return new Node(Properties.from(parent), tier, damage, parent.asItem());
     }
 
     public static void registerNode(String name, Block parent, Node.Tier tier, ItemGroup group) {
-        int crude = 3;
-        int normal = 4;
-        int rich = 5;
+        int crude = Config.getRangeValue("nodes_crude_tiers");
+        int normal = Config.getRangeValue("nodes_normal_tiers");
+        int rich = Config.getRangeValue("nodes_rich_tiers");
 
         int count = 0;
 
