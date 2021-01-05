@@ -51,6 +51,18 @@ public class ModRegister {
         return group;
     }
 
+    public static Groups itemGroup(String name, Block block) {
+        Groups group = Groups.createGroup(name, block);
+        groups.put(name, group);
+        return group;
+    }
+
+    public static Groups itemGroup(String name, Item item) {
+        Groups group = Groups.createGroup(name, item);
+        groups.put(name, group);
+        return group;
+    }
+
     // BLOCK TYPES
     public static Block registerCrop(CropsBlock crop, String name) {
         return registerBlock(name, crop);
@@ -138,9 +150,13 @@ public class ModRegister {
      */
     public static Block registerBlock(String name, Block block)
     {
+        BlockItem itemBlock = new BlockItem(block, new Item.Properties());
         block.setRegistryName(name);
+        itemBlock.setRegistryName(name);
         ForgeRegistries.BLOCKS.register(block);
+        ForgeRegistries.ITEMS.register(itemBlock);
         blocks.put(name, block);
+        LOG.info("Registered new block without group: " + block.getRegistryName());
         return block;
     }
 
@@ -149,6 +165,13 @@ public class ModRegister {
 
     public static Item registerItem(String name, Properties properties, ItemGroup group) {
         Item item = new Item(properties.group(group)).setRegistryName(name);
+        ForgeRegistries.ITEMS.register(item);
+        items.put(name, item);
+        return item;
+    }
+
+    public static Item registerItem(String name, Properties properties) {
+        Item item = new Item(properties).setRegistryName(name);
         ForgeRegistries.ITEMS.register(item);
         items.put(name, item);
         return item;

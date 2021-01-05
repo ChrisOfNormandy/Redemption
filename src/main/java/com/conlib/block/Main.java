@@ -43,13 +43,19 @@ public class Main {
         return new FenceGateBlock(Properties.from(parent));
     }
 
-    public static void registerRockSuite(String name, int harvestLevel, ItemGroup group) {
+    /**
+     * 
+     * @param name
+     * @param harvestLevel
+     * @param group 0: Blocks, 1: Slabs, 2: Stairs, 3: Walls
+     */
+    public static void registerRockSuite(String name, int harvestLevel, ItemGroup[] group) {
         Block block = create_rock(harvestLevel);
 
-        ModRegister.registerBlock(name, block, group);
-        ModRegister.registerBlock(name + "_slab", create_slab(block), group);
-        ModRegister.registerBlock(name + "_stairs", create_stairs(block), group);
-        ModRegister.registerBlock(name + "_wall", create_wall(block), group);
+        ModRegister.registerBlock(name, block, group[0]);
+        ModRegister.registerBlock(name + "_slab", create_slab(block), group[1]);
+        ModRegister.registerBlock(name + "_stairs", create_stairs(block), group[2]);
+        ModRegister.registerBlock(name + "_wall", create_wall(block), group[3]);
     }
 
     public static void registerWoodSuite(String name, ItemGroup group) {

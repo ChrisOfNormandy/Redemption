@@ -1,5 +1,5 @@
 cd mc-mod-json-builder
-node main.js
+node build.js
 
 cd ..
 gradlew runClient
