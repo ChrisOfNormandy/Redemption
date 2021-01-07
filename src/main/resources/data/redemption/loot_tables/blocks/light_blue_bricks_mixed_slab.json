@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"redemption:light_blue_bricks_mixed_slab"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

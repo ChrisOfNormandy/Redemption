@@ -1,1 +1,1 @@
-{"parent":"minecraft:item/generated","textures":{"layer0":"minecraft:item/red_brick"}}
+{"parent":"minecraft:item/generated","textures":{"layer0":"redemption:item/red_brick"}}

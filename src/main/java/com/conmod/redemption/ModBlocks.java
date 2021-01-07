@@ -7,6 +7,7 @@ import com.conlib.itemgroup.Groups;
 import com.conlib.registry.ModRegister;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 
 public class ModBlocks {
     public static void Init() {
@@ -17,40 +18,20 @@ public class ModBlocks {
         Groups walls = ModRegister.itemGroup("redemption_walls", ModRegister.registerBlock("icon_wall", Main.create_wall(parent)));
         Groups[] groups = new Groups[] {blocks, slabs, stairs, walls};
 
-        Main.registerRockSuite("concrete", 2, groups);
-        Main.registerRockSuite("concrete_bricks", 2, groups);
+        Main.registerRockSuite_withProducts("concrete", 2, groups, true);
         Main.registerRockSuite("concrete_large_tile", 2, groups);
-
-        Main.registerRockSuite("cracked_concrete", 2, groups);
-        Main.registerRockSuite("cracked_concrete_bricks", 2, groups);
         Main.registerRockSuite("cracked_concrete_large_tile", 2, groups);
-
-        Main.registerRockSuite("mossy_concrete", 2, groups);
-        Main.registerRockSuite("mossy_concrete_bricks", 2, groups);
         Main.registerRockSuite("mossy_concrete_large_tile", 2, groups);
 
-        Main.registerRockSuite("polished_concrete", 2, groups);
-        Main.registerRockSuite("polished_concrete_bricks", 2, groups);
+        Main.registerRockSuite_withProducts("polished_concrete", 2, groups, true);
         Main.registerRockSuite("polished_concrete_large_tile", 2, groups);
+        Main.registerRockSuite("cracked_polished_concrete_large_tile", 2, groups);
+        Main.registerRockSuite("mossy_polished_concrete_large_tile", 2, groups);
 
-        Main.registerRockSuite("red_bricks", 2, groups);
-        Main.registerRockSuite("red_bricks_mixed", 2, groups);
-        Main.registerRockSuite("red_large_bricks", 2, groups);
-        Main.registerRockSuite("red_bricks_large_tile", 2, groups);
+        for (int i = 0; i < Main.dyes.length; i++) {
+            Main.registerBrickSuite(Main.dyes[i], groups);
+        }
 
-        Main.registerRockSuite("cream_bricks", 2, groups);
-        Main.registerRockSuite("cream_bricks_mixed", 2, groups);
-        Main.registerRockSuite("cream_large_bricks", 2, groups);
-        Main.registerRockSuite("cream_bricks_large_tile", 2, groups);
-
-        Main.registerRockSuite("pink_bricks", 2, groups);
-        Main.registerRockSuite("pink_bricks_mixed", 2, groups);
-        Main.registerRockSuite("pink_large_bricks", 2, groups);
-        Main.registerRockSuite("pink_bricks_large_tile", 2, groups);
-
-        Main.registerRockSuite("grey_bricks", 2, groups);
-        Main.registerRockSuite("grey_bricks_mixed", 2, groups);
-        Main.registerRockSuite("grey_large_bricks", 2, groups);
-        Main.registerRockSuite("grey_bricks_large_tile", 2, groups);
+        Main.registerDyedSuite("clay", Blocks.CLAY, blocks);
     }
 }

@@ -4,6 +4,7 @@ import com.conlib.config.Config;
 import com.conlib.registry.ModRegister;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.SlabBlock;
@@ -15,8 +16,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemGroup;
 
 public class Main {
+    public static String[] dyes = com.conlib.item.Main.dyes;
+
     public static Block create_rock(int harvestLevel) {
-        return new Block(Properties.create(Material.ROCK).hardnessAndResistance(3.0f).sound(SoundType.STONE).harvestLevel(harvestLevel));
+        return new Block(Properties.create(Material.ROCK).hardnessAndResistance(3.0f).sound(SoundType.STONE)
+                .harvestLevel(harvestLevel));
+    }
+
+    public static Block create_brick() {
+        return new Block(Properties.from(Blocks.BRICKS));
     }
 
     public static Block create_wood() {
@@ -47,15 +55,59 @@ public class Main {
      * 
      * @param name
      * @param harvestLevel
-     * @param group 0: Blocks, 1: Slabs, 2: Stairs, 3: Walls
+     * @param groups        0: Blocks, 1: Slabs, 2: Stairs, 3: Walls
      */
-    public static void registerRockSuite(String name, int harvestLevel, ItemGroup[] group) {
+    static void registerBlockWithProducts(String name, Block block, ItemGroup[] groups) {
+        ModRegister.registerBlock(name, block, groups[0]);
+        ModRegister.registerBlock(name + "_slab", create_slab(block), groups[1]);
+        ModRegister.registerBlock(name + "_stairs", create_stairs(block), groups[2]);
+        ModRegister.registerBlock(name + "_wall", create_wall(block), groups[3]);
+    }
+
+    /**
+     * 
+     * @param name
+     * @param harvestLevel
+     * @param groups        0: Blocks, 1: Slabs, 2: Stairs, 3: Walls
+     */
+    public static void registerRockSuite(String name, int harvestLevel, ItemGroup[] groups) {
+        Block block = create_rock(harvestLevel);
+        registerBlockWithProducts(name, block, groups);
+    }
+
+    /**
+     * 
+     * @param name
+     * @param harvestLevel
+     * @param groups        0: Blocks, 1: Slabs, 2: Stairs, 3: Walls
+     * @param includeBase   Whether or not to register mossy and cracked versions of the standard block
+     */
+    public static void registerRockSuite_withProducts(String name, int harvestLevel, ItemGroup[] groups, boolean includeBase) {
         Block block = create_rock(harvestLevel);
 
-        ModRegister.registerBlock(name, block, group[0]);
-        ModRegister.registerBlock(name + "_slab", create_slab(block), group[1]);
-        ModRegister.registerBlock(name + "_stairs", create_stairs(block), group[2]);
-        ModRegister.registerBlock(name + "_wall", create_wall(block), group[3]);
+        registerBlockWithProducts(name, block, groups);
+        if (includeBase) {
+            registerBlockWithProducts("mossy_" + name, new Block(Properties.from(block)), groups);
+            registerBlockWithProducts("cracked_" + name, new Block(Properties.from(block)), groups);
+        }
+        registerBlockWithProducts(name + "_bricks", new Block(Properties.from(block)), groups);
+        registerBlockWithProducts("mossy_" + name + "_bricks", new Block(Properties.from(block)), groups);
+        registerBlockWithProducts("cracked_" + name + "_bricks", new Block(Properties.from(block)), groups);
+    }
+
+    public static void registerBrickSuite(String name, ItemGroup[] groups) {
+        registerBlockWithProducts(name + "_bricks", create_brick(), groups);
+        registerBlockWithProducts(name + "_bricks_large", create_brick(), groups);
+        registerBlockWithProducts(name + "_bricks_large_tile", create_brick(), groups);
+        registerBlockWithProducts(name + "_bricks_mixed", create_brick(), groups);
+    }
+
+    public static void registerBrickSuite(String name, Block block, ItemGroup[] groups) {
+        registerBlockWithProducts(name, block, groups);
+        registerBlockWithProducts(name + "_bricks", new Block(Properties.from(block)), groups);
+        registerBlockWithProducts(name + "_bricks_large", new Block(Properties.from(block)), groups);
+        registerBlockWithProducts(name + "_bricks_large_tile", new Block(Properties.from(block)), groups);
+        registerBlockWithProducts(name + "_bricks_mixed", new Block(Properties.from(block)), groups);
     }
 
     public static void registerWoodSuite(String name, ItemGroup group) {
@@ -69,6 +121,12 @@ public class Main {
         ModRegister.registerBlock(name + "_stairs", create_stairs(planks), group);
         ModRegister.registerBlock(name + "_fence", create_fence(planks), group);
         ModRegister.registerBlock(name + "_fence_gate", create_fenceGate(planks), group);
+    }
+
+    public static void registerDyedSuite(String name, Block parent, ItemGroup group) {
+        for (int i = 0; i < dyes.length; i++) {
+            ModRegister.registerBlock(dyes[i] + "_" + name, new Block(Properties.from(parent)), group);
+        }
     }
 
     public static Node create_node(Block parent, Node.Tier tier, int damage) {
