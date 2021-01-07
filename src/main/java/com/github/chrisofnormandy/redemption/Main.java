@@ -1,4 +1,4 @@
-package com.conmod.redemption;
+package com.github.chrisofnormandy.redemption;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -35,11 +35,11 @@ public class Main
     public static String MOD_ID = "redemption";
 
     public Main() {
-        Mod_Config.Init();
-        Config.Init();
+        // Mod_Config.Init();
+        // Config.Init();
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, MOD_ID + ".toml");
-        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve(MOD_ID + ".toml").toString());
+        // ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, MOD_ID + ".toml");
+        // Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve(MOD_ID + ".toml").toString());
 
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -102,11 +102,7 @@ public class Main
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
-            LOG.info("####################################");
-
-            LOG.info("CONFIG VALUE: " + Config.getRangeValue("test_value"));
-
-            ModRegister.Init();
+            ModRegister.Init(MOD_ID);
             
             ModBlocks.Init();
             ModItems.Init();

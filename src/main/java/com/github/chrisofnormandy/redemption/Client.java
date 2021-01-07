@@ -1,4 +1,4 @@
-package com.conmod.redemption;
+package com.github.chrisofnormandy.redemption;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

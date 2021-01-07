@@ -41,10 +41,14 @@ Here, have a mod description... Grr.
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-# Here's another dependency
-[[dependencies.redemption]]
-    modId="conlib"
-    mandatory=true
-    versionRange="[1.0,)"
+[[dependencies.redemption]] #optional
+    # the modid of the dependency
+    modId="conlib" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[1,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="AFTER"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"

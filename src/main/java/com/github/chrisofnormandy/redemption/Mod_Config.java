@@ -1,4 +1,4 @@
-package com.conmod.redemption;
+package com.github.chrisofnormandy.redemption;
 
 import com.github.chrisofnormandy.conlib.config.Config;
 
