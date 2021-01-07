@@ -1,8 +1,8 @@
 package com.conmod.redemption;
 
-import com.conlib.item.Main;
-import com.conlib.itemgroup.Groups;
-import com.conlib.registry.ModRegister;
+import com.github.chrisofnormandy.conlib.item.Main;
+import com.github.chrisofnormandy.conlib.itemgroup.Groups;
+import com.github.chrisofnormandy.conlib.registry.ModRegister;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;

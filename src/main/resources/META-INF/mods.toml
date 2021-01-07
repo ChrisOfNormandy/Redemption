@@ -43,8 +43,8 @@ Here, have a mod description... Grr.
     side="BOTH"
 # Here's another dependency
 [[dependencies.redemption]]
-    modId="minecraft"
+    modId="conlib"
     mandatory=true
-    versionRange="[1.16.3]"
-    ordering="NONE"
+    versionRange="[1.0,)"
+    ordering="AFTER"
     side="BOTH"

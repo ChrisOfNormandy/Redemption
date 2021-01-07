@@ -1,10 +1,10 @@
 package com.conmod.redemption;
 
-import com.conlib.block.Main;
-import com.conlib.block.OreBase;
-import com.conlib.block.Node.Tier;
-import com.conlib.itemgroup.Groups;
-import com.conlib.registry.ModRegister;
+import com.github.chrisofnormandy.conlib.block.Main;
+import com.github.chrisofnormandy.conlib.block.OreBase;
+import com.github.chrisofnormandy.conlib.block.Node.Tier;
+import com.github.chrisofnormandy.conlib.itemgroup.Groups;
+import com.github.chrisofnormandy.conlib.registry.ModRegister;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

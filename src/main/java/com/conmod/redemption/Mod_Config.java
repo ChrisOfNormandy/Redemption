@@ -1,6 +1,6 @@
 package com.conmod.redemption;
 
-import com.conlib.config.Config;
+import com.github.chrisofnormandy.conlib.config.Config;
 
 public class Mod_Config {
     public static void Init() {
