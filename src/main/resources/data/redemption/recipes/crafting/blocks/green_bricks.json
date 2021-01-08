@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["XX","XX"],"key":{"X":{"item":"redemption:green_brick"}},"result":{"item":"redemption:green_bricks","count":4}}
+{"type":"minecraft:crafting_shaped","pattern":["XX","XX"],"key":{"X":{"item":"masonry:green_brick"}},"result":{"item":"masonry:green_bricks","count":4}}

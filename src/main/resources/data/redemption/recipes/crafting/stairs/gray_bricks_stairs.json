@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["b  ","bb ","bbb"],"key":{"b":{"item":"redemption:gray_bricks"}},"result":{"item":"redemption:gray_bricks_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","pattern":["b  ","bb ","bbb"],"key":{"b":{"item":"masonry:gray_bricks"}},"result":{"item":"masonry:gray_bricks_stairs","count":4}}

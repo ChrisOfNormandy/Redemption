@@ -1,1 +1,1 @@
-{"type":"minecraft:smelting","ingredient":{"item":"redemption:purple_clay_ball"},"result":"redemption:purple_brick","experience":0.3,"cookingtime":200}
+{"type":"minecraft:smelting","ingredient":{"item":"masonry:purple_clay_ball"},"result":"masonry:purple_brick","experience":0.3,"cookingtime":200}

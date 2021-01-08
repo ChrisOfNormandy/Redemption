@@ -1,1 +1,1 @@
-{"type":"minecraft:stonecutting","ingredient":{"item":"redemption:cracked_concrete_bricks"},"result":"redemption:cracked_concrete_bricks_wall","count":1}
+{"type":"minecraft:stonecutting","ingredient":{"item":"masonry:cracked_concrete_bricks"},"result":"masonry:cracked_concrete_bricks_wall","count":1}

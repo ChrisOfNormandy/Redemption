@@ -1,1 +1,1 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"redemption:orange_bricks_large_stairs"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"masonry:orange_bricks_large_stairs"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

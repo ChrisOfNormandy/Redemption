@@ -1,1 +1,1 @@
-{"type":"minecraft:smelting","ingredient":{"item":"redemption:gray_clay_ball"},"result":"redemption:gray_brick","experience":0.3,"cookingtime":200}
+{"type":"minecraft:smelting","ingredient":{"item":"masonry:gray_clay_ball"},"result":"masonry:gray_brick","experience":0.3,"cookingtime":200}

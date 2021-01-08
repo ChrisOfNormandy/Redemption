@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["bbb","bbb"],"key":{"b":{"item":"redemption:concrete_large_tile"}},"result":{"item":"redemption:concrete_large_tile_wall","count":6}}
+{"type":"minecraft:crafting_shaped","pattern":["bbb","bbb"],"key":{"b":{"item":"masonry:concrete_large_tile"}},"result":{"item":"masonry:concrete_large_tile_wall","count":6}}

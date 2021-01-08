@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["XX","XX"],"key":{"X":{"item":"redemption:concrete"}},"result":{"item":"redemption:concrete_bricks","count":4}}
+{"type":"minecraft:crafting_shaped","pattern":["XX","XX"],"key":{"X":{"item":"masonry:concrete"}},"result":{"item":"masonry:concrete_bricks","count":4}}

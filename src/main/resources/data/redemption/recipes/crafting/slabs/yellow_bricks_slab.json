@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["bbb"],"key":{"b":{"item":"redemption:yellow_bricks"}},"result":{"item":"redemption:yellow_bricks_slab","count":6}}
+{"type":"minecraft:crafting_shaped","pattern":["bbb"],"key":{"b":{"item":"masonry:yellow_bricks"}},"result":{"item":"masonry:yellow_bricks_slab","count":6}}

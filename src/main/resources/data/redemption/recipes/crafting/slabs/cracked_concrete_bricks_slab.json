@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["bbb"],"key":{"b":{"item":"redemption:cracked_concrete_bricks"}},"result":{"item":"redemption:cracked_concrete_bricks_slab","count":6}}
+{"type":"minecraft:crafting_shaped","pattern":["bbb"],"key":{"b":{"item":"masonry:cracked_concrete_bricks"}},"result":{"item":"masonry:cracked_concrete_bricks_slab","count":6}}

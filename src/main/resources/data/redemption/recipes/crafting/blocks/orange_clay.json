@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["XX","XX"],"key":{"X":{"item":"redemption:orange_clay_ball"}},"result":{"item":"redemption:orange_clay","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["XX","XX"],"key":{"X":{"item":"masonry:orange_clay_ball"}},"result":{"item":"masonry:orange_clay","count":1}}

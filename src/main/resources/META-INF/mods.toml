@@ -10,11 +10,11 @@ issueTrackerURL="http://my.issue.tracker/" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="redemption" #mandatory
+modId="masonry" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 version="${file.jarVersion}" #mandatory
  # A display name for the mod
-displayName="Redemption Mod" #mandatory
+displayName="masonry Mod" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
 updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -30,7 +30,7 @@ description='''
 Here, have a mod description... Grr.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.redemption]] #optional
+[[dependencies.masonry]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -41,7 +41,7 @@ Here, have a mod description... Grr.
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-[[dependencies.redemption]] #optional
+[[dependencies.masonry]] #optional
     # the modid of the dependency
     modId="conlib" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified

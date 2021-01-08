@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["b  ","bb ","bbb"],"key":{"b":{"item":"redemption:pink_bricks_mixed"}},"result":{"item":"redemption:pink_bricks_mixed_stairs","count":4}}
+{"type":"minecraft:crafting_shaped","pattern":["b  ","bb ","bbb"],"key":{"b":{"item":"masonry:pink_bricks_mixed"}},"result":{"item":"masonry:pink_bricks_mixed_stairs","count":4}}
