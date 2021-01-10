@@ -1,8 +1,8 @@
 package com.github.chrisofnormandy.masonry;
 
 import com.github.chrisofnormandy.conlib.block.Main;
-import com.github.chrisofnormandy.conlib.block.OreBase;
-import com.github.chrisofnormandy.conlib.block.Node.Tier;
+import com.github.chrisofnormandy.conlib.block.subsets.Subsets;
+import com.github.chrisofnormandy.conlib.itemgroup.GroupList;
 import com.github.chrisofnormandy.conlib.itemgroup.Groups;
 import com.github.chrisofnormandy.conlib.registry.ModRegister;
 
@@ -11,27 +11,28 @@ import net.minecraft.block.Blocks;
 
 public class ModBlocks {
     public static void Init() {
-        Block parent = Main.create_rock(1);
-        Groups blocks = ModRegister.itemGroup("masonry_blocks", ModRegister.registerBlock("icon_block", parent));
-        Groups slabs = ModRegister.itemGroup("masonry_slabs", ModRegister.registerBlock("icon_slab", Main.create_slab(parent)));
-        Groups stairs = ModRegister.itemGroup("masonry_stairs", ModRegister.registerBlock("icon_stairs", Main.create_stairs(parent)));
-        Groups walls = ModRegister.itemGroup("masonry_walls", ModRegister.registerBlock("icon_wall", Main.create_wall(parent)));
-        Groups[] groups = new Groups[] {blocks, slabs, stairs, walls};
+        Block parent = Main.Rock.create(1);
 
-        Main.registerRockSuite_withProducts("concrete", 2, groups, true);
-        Main.registerRockSuite("concrete_large_tile", 2, groups);
-        Main.registerRockSuite("cracked_concrete_large_tile", 2, groups);
-        Main.registerRockSuite("mossy_concrete_large_tile", 2, groups);
+        GroupList groups = new GroupList(ModRegister.itemGroup("masonry_blocks", ModRegister.registerBlock("icon_block", parent)));
+        groups.slabs = ModRegister.itemGroup("masonry_slabs", ModRegister.registerBlock("icon_slab", Subsets.create_slab(parent)));
+        groups.stairs = ModRegister.itemGroup("masonry_stairs", ModRegister.registerBlock("icon_stairs", Subsets.create_stairs(parent)));
+        groups.walls = ModRegister.itemGroup("masonry_walls", ModRegister.registerBlock("icon_wall", Subsets.create_wall(parent)));
 
-        Main.registerRockSuite_withProducts("polished_concrete", 2, groups, true);
-        Main.registerRockSuite("polished_concrete_large_tile", 2, groups);
-        Main.registerRockSuite("cracked_polished_concrete_large_tile", 2, groups);
-        Main.registerRockSuite("mossy_polished_concrete_large_tile", 2, groups);
+        Main.Rock.registerSuiteWithVariants("concrete", 2, groups.getRock());
+        Main.Rock.registerSuiteWithVariants("concrete_bricks", 2, groups.getRock());
+        Main.Rock.registerSuiteWithVariants("concrete_large_tile", 2, groups.getRock());
+
+        Main.Rock.registerSuiteWithVariants("polished_concrete", 2, groups.getRock());
+        Main.Rock.registerSuiteWithVariants("polished_concrete_bricks", 2, groups.getRock());
+        Main.Rock.registerSuiteWithVariants("polished_concrete_large_tile", 2, groups.getRock());
 
         for (int i = 0; i < Main.dyes.length; i++) {
-            Main.registerBrickSuite(Main.dyes[i], groups);
-        }
+            ModRegister.registerBlock(Main.dyes[i] + "_clay", new Block(Block.Properties.from(Blocks.CLAY)), groups.blocks);
 
-        Main.registerDyedSuite("clay", Blocks.CLAY, blocks);
+            Main.Bricks.registerSuite(Main.dyes[i] + "_bricks", 2, groups.getRock());
+            Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_large", 2, groups.getRock());
+            Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_mixed", 2, groups.getRock());
+            Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_large_tile", 2, groups.getRock());
+        }
     }
 }
