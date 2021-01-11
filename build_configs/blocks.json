@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Icon Block",
+        "options": 1
+    },
+    {
+        "name": "Icon",
+        "options": 14
+    },
+    {
+        "name": "Concrete",
+        "options": 15
+    },
+    {
+        "name": "Mossy Concrete",
+        "options": 15
+    },
+    {
+        "name": "Cracked Concrete",
+        "options": 15
+    },
+    {
+        "name": "Concrete Bricks",
+        "options": 15
+    },
+    {
+        "name": "Mossy Concrete Bricks",
+        "options": 15
+    },
+    {
+        "name": "Cracked Concrete Bricks",
+        "options": 15
+    },
+    {
+        "name": "Concrete Large Tile",
+        "options": 15
+    },
+    {
+        "name": "Mossy Concrete Large Tile",
+        "options": 15
+    },
+    {
+        "name": "Cracked Concrete Large Tile",
+        "options": 15
+    },
+    {
+        "name": "Polished Concrete",
+        "options": 15
+    },
+    {
+        "name": "Mossy Polished Concrete",
+        "options": 15
+    },
+    {
+        "name": "Cracked Polished Concrete",
+        "options": 15
+    },
+    {
+        "name": "Polished Concrete Bricks",
+        "options": 15
+    },
+    {
+        "name": "Mossy Polished Concrete Bricks",
+        "options": 15
+    },
+    {
+        "name": "Cracked Polished Concrete Bricks",
+        "options": 15
+    },
+    {
+        "name": "Polished Concrete Large Tile",
+        "options": 15
+    },
+    {
+        "name": "Mossy Polished Concrete Large Tile",
+        "options": 15
+    },
+    {
+        "name": "Cracked Polished Concrete Large Tile",
+        "options": 15
+    },
+    {
+        "name": "{dye} Bricks",
+        "options": 15
+    },
+    {
+        "name": "{dye} Bricks Large",
+        "options": 15
+    },
+    {
+        "name": "{dye} Bricks Mixed",
+        "options": 15
+    },
+    {
+        "name": "{dye} Bricks Large Tile",
+        "options": 15
+    },
+    {
+        "name": "{dye} Clay",
+        "options": 1,
+        "drops": {
+            "name": "{dye}_clay_ball",
+            "count": 4
+        }
+    }
+]
