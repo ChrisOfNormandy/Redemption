@@ -1,1 +1,0 @@
-{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"masonry:polished_concrete_large_tile_wall"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

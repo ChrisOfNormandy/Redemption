@@ -92,7 +92,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.4'
+    minecraft 'net.minecraftforge:forge:1.16.4-35.1.36'
     compile 'com.github.chrisofnormandy:conlib:1.0:deobf'
 }
 

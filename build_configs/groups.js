@@ -1,4 +1,4 @@
-const main = require('./main');
+const main = require('../mc-mod-json-builder/main');
 const mod_id = main.mod_id;
 
 // This includes the pattern. An empty JSON Array works too.

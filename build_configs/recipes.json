@@ -1,84 +1,5 @@
 [
     {
-        "options": 1,
-        "pattern": "concrete",
-        "result": "mossy_concrete"
-    },
-    {
-        "options": 1,
-        "pattern": "polished_concrete",
-        "result": "mossy_polished_concrete"
-    },
-    {
-        "options": 1,
-        "pattern": "concrete_bricks",
-        "result": "mossy_concrete_bricks"
-    },
-    {
-        "options": 1,
-        "pattern": "polished_concrete_bricks",
-        "result": "mossy_polished_concrete_bricks"
-    },
-    {
-        "options": 1,
-        "pattern": "concrete_large_tile",
-        "result": "mossy_concrete_large_tile"
-    },
-    {
-        "options": 1,
-        "pattern": "polished_concrete_large_tile",
-        "result": "mossy_polished_concrete_large_tile"
-    },
-    
-    {
-        "options": 2,
-        "block": true,
-        "pattern": "concrete",
-        "result": "cracked_concrete",
-        "experience": 0.1,
-        "cookingtime": 200
-    },
-    {
-        "options": 2,
-        "block": true,
-        "pattern": "polished_concrete",
-        "result": "cracked_polished_concrete",
-        "experience": 0.1,
-        "cookingtime": 200
-    },
-    {
-        "options": 2,
-        "block": true,
-        "pattern": "concrete_bricks",
-        "result": "cracked_concrete_bricks",
-        "experience": 0.1,
-        "cookingtime": 200
-    },
-    {
-        "options": 2,
-        "block": true,
-        "pattern": "polished_concrete_bricks",
-        "result": "cracked_polished_concrete_bricks",
-        "experience": 0.1,
-        "cookingtime": 200
-    },
-    {
-        "options": 2,
-        "block": true,
-        "pattern": "concrete_large_tile",
-        "result": "cracked_concrete_large_tile",
-        "experience": 0.1,
-        "cookingtime": 200
-    },
-    {
-        "options": 2,
-        "block": true,
-        "pattern": "polished_concrete_large_tile",
-        "result": "cracked_polished_concrete_large_tile",
-        "experience": 0.1,
-        "cookingtime": 200
-    },
-    {
         "options": 2,
         "block": true,
         "pattern": "{dye}_clay",
@@ -92,18 +13,6 @@
         "result": "{dye}_bricks",
         "experience": 0.3,
         "cookingtime": 200
-    },
-    {
-        "options": 3,
-        "block": true,
-        "pattern": "concrete",
-        "result": "concrete_bricks;4"
-    },
-    {
-        "options": 3,
-        "block": true,
-        "pattern": "polished_concrete",
-        "result": "polished_concrete_bricks;4"
     },
     {
         "options": 3,
@@ -132,25 +41,6 @@
         "block": true,
         "pattern": "minecraft:clay",
         "result": "{dye}_clay"
-    },
-
-    {
-        "options": 6,
-        "type": "blocks",
-        "pattern": "concrete",
-        "result": "concrete_large_tile"
-    },
-    {
-        "options": 6,
-        "type": "blocks",
-        "pattern": "concrete",
-        "result": "polished_concrete"
-    },
-    {
-        "options": 6,
-        "type": "blocks",
-        "pattern": "polished_concrete",
-        "result": "polished_concrete_large_tile"
     },
     {
         "options": 6,
