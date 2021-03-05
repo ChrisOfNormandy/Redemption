@@ -10,7 +10,7 @@ buildscript {
 }
 repositories{
     maven {
-        url "https://raw.githubusercontent.com/ChrisOfNormandy/CoNLib/dev"
+        url "https://raw.githubusercontent.com/ChrisOfNormandy/CoNLib/1.16.5"
     }
 }
 
@@ -92,7 +92,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.36'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.0.46'
     compile 'com.github.chrisofnormandy:conlib:1.0:deobf'
 }
 
