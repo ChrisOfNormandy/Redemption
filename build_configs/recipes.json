@@ -1,5 +1,10 @@
 [
     {
+        "options": 1,
+        "pattern": "{dye}_bricks_large",
+        "result": "mossy_{dye}_bricks_large"
+    },
+    {
         "options": 2,
         "block": true,
         "pattern": "{dye}_clay",
@@ -12,6 +17,14 @@
         "pattern": "{dye}_clay_ball",
         "result": "{dye}_bricks",
         "experience": 0.3,
+        "cookingtime": 200
+    },
+    {
+        "options": 2,
+        "block": true,
+        "pattern": "{dye}_bricks_large",
+        "result": "cracked_{dye}_bricks_large",
+        "experience": 0.1,
         "cookingtime": 200
     },
     {

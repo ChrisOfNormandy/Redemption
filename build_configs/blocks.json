@@ -24,6 +24,14 @@
         "options": 15
     },
     {
+        "name": "Cracked {dye} Bricks Large",
+        "options": 15
+    },
+    {
+        "name": "Mossy {dye} Bricks Large",
+        "options": 15
+    },
+    {
         "name": "{dye} Clay",
         "options": 1,
         "drops": {

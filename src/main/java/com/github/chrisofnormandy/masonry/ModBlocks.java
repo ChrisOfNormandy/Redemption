@@ -21,8 +21,12 @@ public class ModBlocks {
             ModRegister.registerBlock(Main.dyes[i] + "_clay", new Block(Block.Properties.from(Blocks.CLAY)), groups.blocks);
 
             Main.Bricks.registerSuite(Main.dyes[i] + "_bricks", 2, groups.getRock());
-            Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_large", 2, groups.getRock());
             Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_mixed", 2, groups.getRock());
+
+            Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_large", 2, groups.getRock());
+            Main.Bricks.registerSuite("cracked_" + Main.dyes[i] + "_bricks_large", 2, groups.getRock());
+            Main.Bricks.registerSuite("mossy_" + Main.dyes[i] + "_bricks_large", 2, groups.getRock());
+
             Main.Bricks.registerSuite(Main.dyes[i] + "_bricks_large_tile", 2, groups.getRock());
         }
     }
